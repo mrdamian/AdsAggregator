@@ -11,3 +11,4 @@ obj/
 # Uncomment if necessary however generally it will be regenerated when needed
 !**/packages/repositories.config
 AdsAggregatorWebPresentationModel/AdsAggregatorWebPresentationModel.csproj.user
+AdsAggregator/AdsAggregatorWeb.csproj.user
