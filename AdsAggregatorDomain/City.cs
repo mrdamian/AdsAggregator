@@ -24,7 +24,7 @@
             }
         }
 
-        public string Name1
+        public string Name
         {
             get
             {
