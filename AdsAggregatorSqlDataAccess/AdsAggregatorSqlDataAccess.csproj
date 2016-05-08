@@ -52,10 +52,17 @@
     <Compile Include="AdsAggregatorDbContext.cs" />
     <Compile Include="City.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\CityRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AdsAggregatorDomain\AdsAggregatorDomain.csproj">
+      <Project>{9a4bcd54-1381-4e64-a574-2d1bf289ed8f}</Project>
+      <Name>AdsAggregatorDomain</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
