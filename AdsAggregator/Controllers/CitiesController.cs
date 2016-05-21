@@ -1,18 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
+﻿using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using AdsAggregatorSqlDataAccess;
+using AdsAggregatorDomain.Repositories;
 
 namespace AdsAggregator.Controllers
 {
     public class CitiesController : Controller
     {
         private AdsAggregatorDbContext db = new AdsAggregatorDbContext();
+        private ICityRepository _cityRepository;
+
+        public CitiesController(ICityRepository cityRepository)
+        {
+            _cityRepository = cityRepository;
+        }
 
         // GET: Cities
         public ActionResult Index()

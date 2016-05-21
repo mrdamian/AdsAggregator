@@ -7,9 +7,9 @@ namespace AdsAggregatorSqlDataAccess.Repositories
     {
         private readonly AdsAggregatorDbContext _context;
 
-        public CityRepository()
+        public CityRepository(string connString)
         {
-            _context = new AdsAggregatorDbContext();
+            _context = new AdsAggregatorDbContext(connString);
         }
 
         public void Insert(AdsAggregatorDomain.City city)

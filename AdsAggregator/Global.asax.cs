@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Castle.Windsor;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,7 +9,7 @@ using System.Web.Routing;
 
 namespace AdsAggregator
 {
-    public class MvcApplication : System.Web.HttpApplication
+    public class MvcApplication : HttpApplication
     {
         protected void Application_Start()
         {
@@ -16,6 +17,15 @@ namespace AdsAggregator
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+            var container = new WindsorContainer();
+            container.Install(new AdsAggregatorWindsorInstaller());
+
+            var controllerFactory =
+                new WindsorControllerFactory(container);
+
+            ControllerBuilder.Current.SetControllerFactory(
+                controllerFactory);
         }
     }
 }

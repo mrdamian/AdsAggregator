@@ -8,6 +8,10 @@ namespace AdsAggregatorSqlDataAccess
         {
         }
 
+        public AdsAggregatorDbContext(string connString) : base(connString)
+        {
+        }
+
         public DbSet<City> Cities { get; set; }
     }
 }
