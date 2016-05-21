@@ -10,5 +10,10 @@ namespace AdsAggregatorSqlDataAccess
     {
         public virtual int CityId { get; set; }
         public virtual string Name { get; set; }
+
+        internal AdsAggregatorDomain.City ToDomainCity()
+        {
+            return new AdsAggregatorDomain.City(CityId, Name);
+        }
     }
 }

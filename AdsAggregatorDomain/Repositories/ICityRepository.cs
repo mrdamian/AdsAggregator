@@ -1,4 +1,6 @@
-﻿namespace AdsAggregatorDomain.Repositories
+﻿using System.Collections.Generic;
+
+namespace AdsAggregatorDomain.Repositories
 {
     public interface ICityRepository
     {
@@ -7,5 +9,7 @@
         void Delete(City city);
 
         void Update(City city);
+
+        IEnumerable<City> GetAll();
     }
 }

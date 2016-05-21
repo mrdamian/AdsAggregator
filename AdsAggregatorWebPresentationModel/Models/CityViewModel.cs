@@ -1,6 +1,7 @@
 ﻿using AdsAggregatorDomain;
+using System.ComponentModel.DataAnnotations;
 
-namespace AdsAggregator.Models
+namespace AdsAggregatorWebPresentationModel.Models
 {
     public class CityViewModel
     {
@@ -20,6 +21,7 @@ namespace AdsAggregator.Models
             }
         }
 
+        [Display(Name="Test")]
         public string Name { get; set; }
     }
 }

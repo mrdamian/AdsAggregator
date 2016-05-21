@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using AdsAggregatorDomain;
 using AdsAggregatorDomain.Repositories;
+using System.Linq;
 
 namespace AdsAggregatorSqlDataAccess.Repositories
 {
@@ -34,6 +37,11 @@ namespace AdsAggregatorSqlDataAccess.Repositories
         {
             var entityCity = _context.Cities.Find(city.CityId);
             _context.Cities.Remove(entityCity);
+        }
+
+        public IEnumerable<AdsAggregatorDomain.City> GetAll()
+        {
+            return _context.Cities.AsEnumerable().Select(c => c.ToDomainCity());
         }
 
         public void Dispose()
