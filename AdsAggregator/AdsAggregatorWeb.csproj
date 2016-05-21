@@ -177,7 +177,6 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -265,10 +264,6 @@
     <ProjectReference Include="..\AdsAggregatorDomain\AdsAggregatorDomain.csproj">
       <Project>{9a4bcd54-1381-4e64-a574-2d1bf289ed8f}</Project>
       <Name>AdsAggregatorDomain</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AdsAggregatorSqlDataAccess\AdsAggregatorSqlDataAccess.csproj">
-      <Project>{1732af14-1757-4bf6-9e33-9ed0ec6af8b9}</Project>
-      <Name>AdsAggregatorSqlDataAccess</Name>
     </ProjectReference>
     <ProjectReference Include="..\AdsAggregatorWebPresentationModel\AdsAggregatorWebPresentationModel.csproj">
       <Project>{4f3a2e06-bd1c-42a0-9016-8a42216ce8de}</Project>
