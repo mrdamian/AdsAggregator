@@ -24,6 +24,7 @@ namespace AdsAggregatorSqlDataAccess.Repositories
             };
 
             _context.Cities.Add(newCity);
+            _context.SaveChanges();
         }
 
         public void Update(AdsAggregatorDomain.City city)
@@ -37,11 +38,25 @@ namespace AdsAggregatorSqlDataAccess.Repositories
         {
             var entityCity = _context.Cities.Find(city.CityId);
             _context.Cities.Remove(entityCity);
+            _context.SaveChanges();
         }
 
         public IEnumerable<AdsAggregatorDomain.City> GetAll()
         {
             return _context.Cities.AsEnumerable().Select(c => c.ToDomainCity());
+        }
+
+        public AdsAggregatorDomain.City Find(int id)
+        {
+            City city = _context.Cities.Find(id);
+            if (city == null)
+            {
+                return null;
+            }
+            else
+            {
+                return city.ToDomainCity();
+            }
         }
 
         public void Dispose()

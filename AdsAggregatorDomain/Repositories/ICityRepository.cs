@@ -11,5 +11,7 @@ namespace AdsAggregatorDomain.Repositories
         void Update(City city);
 
         IEnumerable<City> GetAll();
+
+        City Find(int id);
     }
 }

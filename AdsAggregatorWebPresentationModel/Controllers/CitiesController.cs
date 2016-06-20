@@ -3,7 +3,7 @@ using System.Web.Mvc;
 using AdsAggregatorDomain.Repositories;
 using AdsAggregatorWebPresentationModel.Models;
 using System.Linq;
-using System.Collections.Generic;
+using AdsAggregatorDomain;
 
 namespace AdsAggregatorWebPresentationModel.Controllers
 {
@@ -25,17 +25,16 @@ namespace AdsAggregatorWebPresentationModel.Controllers
         // GET: Cities/Details/5
         public ActionResult Details(int? id)
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //City city = db.Cities.Find(id);
-            //if (city == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(city);
-            return View("test");
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var city = _cityRepository.Find((int)id);
+            if (city == null)
+            {
+                return HttpNotFound();
+            }
+            return View(new CityViewModel(city));
         }
 
         // GET: Cities/Create
@@ -51,31 +50,29 @@ namespace AdsAggregatorWebPresentationModel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "CityId,Name")] CityViewModel city)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    db.Cities.Add(city);
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
+            if (ModelState.IsValid)
+            {
+                City domainCity = new City(city.CityId, city.Name);
+                _cityRepository.Insert(domainCity);
+                return RedirectToAction("Index");
+            }
 
-            //return View(city);
-            return View("test");
+            return View(city);
         }
 
         // GET: Cities/Edit/5
         public ActionResult Edit(int? id)
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //City city = db.Cities.Find(id);
-            //if (city == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(city);
-            return View("test");
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var city = _cityRepository.Find((int)id);
+            if (city == null)
+            {
+                return HttpNotFound();
+            }
+            return View(new CityViewModel(city));
         }
 
         // POST: Cities/Edit/5
@@ -85,30 +82,29 @@ namespace AdsAggregatorWebPresentationModel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "CityId,Name")] CityViewModel city)
         {
-            //if (ModelState.IsValid)
-            //{
-            //    db.Entry(city).State = EntityState.Modified;
-            //    db.SaveChanges();
-            //    return RedirectToAction("Index");
-            //}
-            //return View(city);
-            return View("test");
+            if (ModelState.IsValid)
+            {
+                var domainCity = _cityRepository.Find(city.CityId);
+                domainCity.Name = city.Name;
+                _cityRepository.Update(domainCity);
+                return RedirectToAction("Index");
+            }
+            return View(city);
         }
 
         // GET: Cities/Delete/5
         public ActionResult Delete(int? id)
         {
-            //if (id == null)
-            //{
-            //    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            //}
-            //City city = db.Cities.Find(id);
-            //if (city == null)
-            //{
-            //    return HttpNotFound();
-            //}
-            //return View(city);
-            return View("test");
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var city = _cityRepository.Find((int)id);
+            if (city == null)
+            {
+                return HttpNotFound();
+            }
+            return View(new CityViewModel(city));
         }
 
         // POST: Cities/Delete/5
@@ -116,9 +112,8 @@ namespace AdsAggregatorWebPresentationModel.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            //City city = db.Cities.Find(id);
-            //db.Cities.Remove(city);
-            //db.SaveChanges();
+            var city = _cityRepository.Find(id);
+            _cityRepository.Delete(city);
             return RedirectToAction("Index");
         }
     }

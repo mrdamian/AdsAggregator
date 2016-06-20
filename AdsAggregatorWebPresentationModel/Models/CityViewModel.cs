@@ -5,23 +5,20 @@ namespace AdsAggregatorWebPresentationModel.Models
 {
     public class CityViewModel
     {
-        private readonly int _cityId;
+        public CityViewModel()
+        {
+        }
 
         public CityViewModel(City city)
         {
-            _cityId = city.CityId;
+            CityId = city.CityId;
             Name = city.Name;
         }
 
-        public int CityId
-        {
-            get
-            {
-                return _cityId;
-            }
-        }
+        public int CityId { get; set; }
 
         [Display(Name="Name")]
+        [MinLength(3)]
         public string Name { get; set; }
     }
 }
