@@ -27,6 +27,8 @@ namespace AdsAggregatorWeb
                     {
                         connString = connectionString
                     }))));
+            container.Register(Classes.FromAssemblyNamed(dataAccessAssemblyName).BasedOn<AdsAggregatorDomain.IObjectsInitializer>().WithService.Base().LifestyleSingleton());
+            container.Resolve<AdsAggregatorDomain.IObjectsInitializer>().Initialize();
         }
     }
 }

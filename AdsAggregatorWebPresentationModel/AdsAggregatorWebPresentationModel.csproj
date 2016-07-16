@@ -69,8 +69,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controllers\DistrictsController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Models\DistrictViewModel.cs" />
+    <Compile Include="Models\DistrictDetailsViewModel.cs" />
+    <Compile Include="Models\DistrictEditViewModel.cs" />
     <Compile Include="Models\CityViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

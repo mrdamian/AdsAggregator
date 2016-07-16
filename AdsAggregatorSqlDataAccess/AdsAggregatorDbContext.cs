@@ -13,5 +13,7 @@ namespace AdsAggregatorSqlDataAccess
         }
 
         public DbSet<City> Cities { get; set; }
+
+        public DbSet<District> Districts { get; set; }
     }
 }

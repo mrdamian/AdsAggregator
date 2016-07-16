@@ -23,6 +23,6 @@ namespace AdsAggregatorWeb
         public override void ReleaseController(IController controller)
         {
             this.container.Release(controller);
-        }
+            }
     }
 }

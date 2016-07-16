@@ -50,8 +50,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AdsAggregatorDbContext.cs" />
+    <Compile Include="DatabaseInitializer.cs" />
+    <Compile Include="District.cs" />
     <Compile Include="City.cs" />
+    <Compile Include="DummyDataDbInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\DistrictRepository.cs" />
     <Compile Include="Repositories\CityRepository.cs" />
   </ItemGroup>
   <ItemGroup>
