@@ -10,111 +10,113 @@ namespace AdsAggregatorWebPresentationModel.Controllers
     public class DistrictsController : Controller
     {
         private IDistrictRepository _districtRepository;
+        private ICityRepository _cityRepository;
 
-        public DistrictsController(IDistrictRepository districtRepository)
+        public DistrictsController(IDistrictRepository districtRepository, ICityRepository cityRepository)
         {
             _districtRepository = districtRepository;
+            _cityRepository = cityRepository;
         }
 
-        // GET: Cities
+        // GET: Districts
         public ActionResult Index()
         {
             return View(_districtRepository.GetAll().Select(c => new DistrictViewModel(c)));
         }
 
-        //// GET: Cities/Details/5
-        //public ActionResult Details(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    var city = _cityRepository.Find((int)id);
-        //    if (city == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(new CityViewModel(city));
-        //}
+        // GET: Districts/Details/5
+        public ActionResult Details(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var district = _districtRepository.Find((int)id);
+            if (district == null)
+            {
+                return HttpNotFound();
+            }
+            return View(new DistrictDetailsViewModel(district));
+        }
 
-        //// GET: Cities/Create
-        //public ActionResult Create()
-        //{
-        //    return View();
-        //}
+        // GET: Districts/Create
+        public ActionResult Create()
+        {
+            return View(new DistrictEditViewModel(_cityRepository.GetAll()));
+        }
 
-        //// POST: Cities/Create
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Create([Bind(Include = "CityId,Name")] CityViewModel city)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        City domainCity = new City(city.CityId, city.Name);
-        //        _cityRepository.Insert(domainCity);
-        //        return RedirectToAction("Index");
-        //    }
+        // POST: Districts/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Create([Bind(Include = "DistrictId, CityId,Name")] DistrictEditViewModel district)
+        {
+            if (ModelState.IsValid)
+            {
+                District domainDistrict = new District(district.DistrictId, district.Name, _cityRepository.Find(district.CityId));
+                _districtRepository.Insert(domainDistrict);
+                return RedirectToAction("Index");
+            }
+            return View(district);
+        }
 
-        //    return View(city);
-        //}
+        // GET: Districts/Edit/5
+        public ActionResult Edit(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var district = _districtRepository.Find((int)id);
+            if (district == null)
+            {
+                return HttpNotFound();
+            }
+            return View(new DistrictEditViewModel(_cityRepository.GetAll(), district));
+        }
 
-        //// GET: Cities/Edit/5
-        //public ActionResult Edit(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    var city = _cityRepository.Find((int)id);
-        //    if (city == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(new CityViewModel(city));
-        //}
+        // POST: Districts/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "DistrictId,CityId,Name")] DistrictEditViewModel district)
+        {
+            if (ModelState.IsValid)
+            {
+                var domainDistrict = _districtRepository.Find(district.DistrictId);
+                domainDistrict.Name = district.Name;
+                domainDistrict.City = _cityRepository.Find(district.CityId);
+                _districtRepository.Update(domainDistrict);
+                return RedirectToAction("Index");
+            }
+            return View(district);
+        }
 
-        //// POST: Cities/Edit/5
-        //// To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        //// more details see http://go.microsoft.com/fwlink/?LinkId=317598.
-        //[HttpPost]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult Edit([Bind(Include = "CityId,Name")] CityViewModel city)
-        //{
-        //    if (ModelState.IsValid)
-        //    {
-        //        var domainCity = _cityRepository.Find(city.CityId);
-        //        domainCity.Name = city.Name;
-        //        _cityRepository.Update(domainCity);
-        //        return RedirectToAction("Index");
-        //    }
-        //    return View(city);
-        //}
+        // GET: Districts/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var district = _districtRepository.Find((int)id);
+            if (district == null)
+            {
+                return HttpNotFound();
+            }
+            return View(new DistrictDetailsViewModel(district));
+        }
 
-        //// GET: Cities/Delete/5
-        //public ActionResult Delete(int? id)
-        //{
-        //    if (id == null)
-        //    {
-        //        return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-        //    }
-        //    var city = _cityRepository.Find((int)id);
-        //    if (city == null)
-        //    {
-        //        return HttpNotFound();
-        //    }
-        //    return View(new CityViewModel(city));
-        //}
-
-        //// POST: Cities/Delete/5
-        //[HttpPost, ActionName("Delete")]
-        //[ValidateAntiForgeryToken]
-        //public ActionResult DeleteConfirmed(int id)
-        //{
-        //    var city = _cityRepository.Find(id);
-        //    _cityRepository.Delete(city);
-        //    return RedirectToAction("Index");
-        //}
+        // POST: Districts/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            var district = _districtRepository.Find(id);
+            _districtRepository.Delete(district);
+            return RedirectToAction("Index");
+        }
     }
 }

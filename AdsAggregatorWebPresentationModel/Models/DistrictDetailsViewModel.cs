@@ -22,6 +22,7 @@ namespace AdsAggregatorWebPresentationModel.Models
         [MinLength(3)]
         public string Name { get; set; }
 
+        [Display(Name = "City")]
         public string CityName { get; private set; }
     }
 }

@@ -1,31 +1,37 @@
-﻿//using AdsAggregatorDomain;
-//using System.Collections;
-//using System.Collections.Generic;
-//using System.ComponentModel.DataAnnotations;
-//using System.Web.Mvc;
+﻿using AdsAggregatorDomain;
+using System.Collections;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Web.Mvc;
+using System.Linq;
 
-//namespace AdsAggregatorWebPresentationModel.Models
-//{
-//    public class DistrictEditViewModel
-//    {
-//        public DistrictEditViewModel()
-//        {
-//        }
+namespace AdsAggregatorWebPresentationModel.Models
+{
+    public class DistrictEditViewModel
+    {
+        public DistrictEditViewModel()
+        {
 
-//        public DistrictEditViewModel(District district)
-//        {
-//            CityId = city.CityId;
-//            Name = city.Name;
-//        }
+        }
+        public DistrictEditViewModel(IEnumerable<City> cities, District district = null)
+        {
+            if (district != null)
+            {
+                DistrictId = district.DistrictId;
+                Name = district.Name;
+            }
+            Cities = cities.Select(c => new SelectListItem { Text = c.Name, Value = c.CityId.ToString(), Selected = false });
+        }
 
-//        public IEnumerable<SelectListItem> Cities { get; private set; }
+        public IEnumerable<SelectListItem> Cities { get; private set; }
 
-//        public int DistrictId { get; set; }
+        public int DistrictId { get; set; }
 
-//        [Display(Name="Name")]
-//        [MinLength(3)]
-//        public string Name { get; set; }
+        [Display(Name = "City")]
+        public int CityId { get; set; }
 
-//        public string Name { get; set; }
-//    }
-//}
+        [Display(Name = "Name")]
+        [MinLength(3)]
+        public string Name { get; set; }
+    }
+}
