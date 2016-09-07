@@ -4,6 +4,7 @@ using AdsAggregatorDomain.Repositories;
 using System.Linq;
 using System.Data;
 using System.Data.Entity;
+using AdsAggregatorSqlDataAccess.Entities;
 
 namespace AdsAggregatorSqlDataAccess.Repositories
 {
@@ -16,7 +17,7 @@ namespace AdsAggregatorSqlDataAccess.Repositories
             _context = new AdsAggregatorDbContext(connString);
         }
 
-        public void Insert(AdsAggregatorDomain.District district)
+        public void Insert(AdsAggregatorDomain.DomainObjects.District district)
         {
             District newDistrict = new District()
             {
@@ -33,7 +34,7 @@ namespace AdsAggregatorSqlDataAccess.Repositories
             _context.SaveChanges();
         }
 
-        public void Update(AdsAggregatorDomain.District district)
+        public void Update(AdsAggregatorDomain.DomainObjects.District district)
         {
             var entityDistrict =_context.Districts.Find(district.DistrictId);
             entityDistrict.Name = district.Name;
@@ -45,19 +46,19 @@ namespace AdsAggregatorSqlDataAccess.Repositories
             _context.SaveChanges();
         }
 
-        public void Delete(AdsAggregatorDomain.District district)
+        public void Delete(AdsAggregatorDomain.DomainObjects.District district)
         {
             var entityDistrict= _context.Districts.Find(district.DistrictId);
             _context.Districts.Remove(entityDistrict);
             _context.SaveChanges();
         }
 
-        public IEnumerable<AdsAggregatorDomain.District> GetAll()
+        public IEnumerable<AdsAggregatorDomain.DomainObjects.District> GetAll()
         {
             return _context.Districts.Include(f => f.City).AsEnumerable().Select(c => c.ToDomainDistrict());
         }
 
-        public AdsAggregatorDomain.District Find(int id)
+        public AdsAggregatorDomain.DomainObjects.District Find(int id)
         {
             District district = _context.Districts.Find(id);
             if (district == null)
@@ -68,7 +69,7 @@ namespace AdsAggregatorSqlDataAccess.Repositories
             {
                 return district.ToDomainDistrict();
             }
-        }
+        }   
 
         public void Dispose()
         {

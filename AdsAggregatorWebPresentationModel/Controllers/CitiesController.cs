@@ -4,6 +4,7 @@ using AdsAggregatorDomain.Repositories;
 using AdsAggregatorWebPresentationModel.Models;
 using System.Linq;
 using AdsAggregatorDomain;
+using AdsAggregatorDomain.DomainObjects;
 
 namespace AdsAggregatorWebPresentationModel.Controllers
 {

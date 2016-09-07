@@ -40,12 +40,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DomainObjects\Language.cs" />
+    <Compile Include="DomainObjects\StreetType.cs" />
     <Compile Include="IObjectsInitializer.cs" />
+    <Compile Include="Repositories\ILanguageRepository.cs" />
+    <Compile Include="Repositories\IStreetRepository.cs" />
     <Compile Include="Repositories\IDistrictRepository.cs" />
     <Compile Include="Repositories\ICityRepository.cs" />
-    <Compile Include="Street.cs" />
-    <Compile Include="District.cs" />
-    <Compile Include="City.cs" />
+    <Compile Include="DomainObjects\Street.cs" />
+    <Compile Include="DomainObjects\District.cs" />
+    <Compile Include="DomainObjects\City.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

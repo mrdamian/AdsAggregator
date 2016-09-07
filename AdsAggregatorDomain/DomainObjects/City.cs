@@ -1,4 +1,4 @@
-﻿namespace AdsAggregatorDomain
+﻿namespace AdsAggregatorDomain.DomainObjects
 {
     public class City
     {

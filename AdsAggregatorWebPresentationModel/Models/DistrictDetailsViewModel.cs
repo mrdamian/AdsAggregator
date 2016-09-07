@@ -1,4 +1,5 @@
 ﻿using AdsAggregatorDomain;
+using AdsAggregatorDomain.DomainObjects;
 using System.ComponentModel.DataAnnotations;
 
 namespace AdsAggregatorWebPresentationModel.Models

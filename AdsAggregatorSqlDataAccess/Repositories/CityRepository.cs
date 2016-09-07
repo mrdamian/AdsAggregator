@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using AdsAggregatorDomain.Repositories;
 using System.Linq;
+using AdsAggregatorSqlDataAccess.Entities;
 
 namespace AdsAggregatorSqlDataAccess.Repositories
 {
@@ -14,7 +15,7 @@ namespace AdsAggregatorSqlDataAccess.Repositories
             _context = new AdsAggregatorDbContext(connString);
         }
 
-        public void Insert(AdsAggregatorDomain.City city)
+        public void Insert(AdsAggregatorDomain.DomainObjects.City city)
         {
             City newCity = new City()
             {
@@ -26,26 +27,26 @@ namespace AdsAggregatorSqlDataAccess.Repositories
             _context.SaveChanges();
         }
 
-        public void Update(AdsAggregatorDomain.City city)
+        public void Update(AdsAggregatorDomain.DomainObjects.City city)
         {
             var entityCity =_context.Cities.Find(city.CityId);
             entityCity.Name = city.Name;
             _context.SaveChanges();
         }
 
-        public void Delete(AdsAggregatorDomain.City city)
+        public void Delete(AdsAggregatorDomain.DomainObjects.City city)
         {
             var entityCity = _context.Cities.Find(city.CityId);
             _context.Cities.Remove(entityCity);
             _context.SaveChanges();
         }
 
-        public IEnumerable<AdsAggregatorDomain.City> GetAll()
+        public IEnumerable<AdsAggregatorDomain.DomainObjects.City> GetAll()
         {
             return _context.Cities.AsEnumerable().Select(c => c.ToDomainCity());
         }
 
-        public AdsAggregatorDomain.City Find(int id)
+        public AdsAggregatorDomain.DomainObjects.City Find(int id)
         {
             City city = _context.Cities.Find(id);
             if (city == null)

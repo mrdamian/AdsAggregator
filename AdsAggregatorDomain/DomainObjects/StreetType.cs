@@ -1,28 +1,28 @@
-﻿namespace AdsAggregatorDomain
+﻿namespace AdsAggregatorDomain.DomainObjects
 {
-    public class District
+    public class StreetType
     {
-        private int _districtId;
+        private int _streetTypeId;
         private string _name;
-        private City _city;
+        private Language _language;
 
-        public District(int id, string name, City city)
+        public StreetType(int streetTypeId, string name, Language language)
         {
-            _districtId = id;
+            _streetTypeId = streetTypeId;
             _name = name;
-            _city = city;
+            _language = language;
         }
 
-        public int DistrictId
+        public int StreetTypeId
         {
             get
             {
-                return _districtId;
+                return _streetTypeId;
             }
 
             set
             {
-                _districtId = value;
+                _streetTypeId = value;
             }
         }
 
@@ -39,16 +39,16 @@
             }
         }
 
-        public City City
+        public Language Language
         {
             get
             {
-                return _city;
+                return _language;
             }
 
             set
             {
-                _city = value;
+                _language = value;
             }
         }
     }

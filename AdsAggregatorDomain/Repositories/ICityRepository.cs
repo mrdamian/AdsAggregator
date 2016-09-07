@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using AdsAggregatorDomain.DomainObjects;
+using System.Collections.Generic;
 
 namespace AdsAggregatorDomain.Repositories
 {
