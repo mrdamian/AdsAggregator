@@ -1,10 +1,10 @@
 ﻿namespace AdsAggregatorSqlDataAccess.Entities
 {
-    internal class StreetTranslation
+    public class StreetTranslation
     {
-        internal virtual int StreetTranslationId { get; set; }
-        internal virtual Street Street { get; set; }
-        internal virtual string Name { get; set; }
-        internal virtual Language Language { get; set; }
+        public virtual int StreetTranslationId { get; set; }
+        public virtual Street Street { get; set; }
+        public virtual string Name { get; set; }
+        public virtual Language Language { get; set; }
     }
 }

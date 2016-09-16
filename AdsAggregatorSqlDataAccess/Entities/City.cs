@@ -1,11 +1,11 @@
 ﻿namespace AdsAggregatorSqlDataAccess.Entities
 {
-    internal class City
+    public class City
     {
-        internal virtual int CityId { get; set; }
-        internal virtual string Name { get; set; }
+        public virtual int CityId { get; set; }
+        public virtual string Name { get; set; }
 
-        internal AdsAggregatorDomain.DomainObjects.City ToDomainCity()
+        public AdsAggregatorDomain.DomainObjects.City ToDomainCity()
         {
             return new AdsAggregatorDomain.DomainObjects.City(CityId, Name);
         }

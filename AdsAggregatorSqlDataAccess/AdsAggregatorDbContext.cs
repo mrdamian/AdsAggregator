@@ -3,7 +3,7 @@ using System.Data.Entity;
 
 namespace AdsAggregatorSqlDataAccess
 {
-    internal class AdsAggregatorDbContext : DbContext
+    public class AdsAggregatorDbContext : DbContext
     {
         public AdsAggregatorDbContext() : base("AdsAggregatorDb")
         {
@@ -13,18 +13,18 @@ namespace AdsAggregatorSqlDataAccess
         {
         }
 
-        internal DbSet<City> Cities { get; set; }
+        public DbSet<City> Cities { get; set; }
 
-        internal DbSet<District> Districts { get; set; }
+        public DbSet<District> Districts { get; set; }
 
-        internal DbSet<Language> Languages { get; set; }
+        public DbSet<Language> Languages { get; set; }
 
-        internal DbSet<Street> Streets { get; set; }
+        public DbSet<Street> Streets { get; set; }
 
-        internal DbSet<StreetTranslation> StreetTranslations { get; set; }
+        public DbSet<StreetTranslation> StreetTranslations { get; set; }
 
-        internal DbSet<StreetType> StreetTypes { get; set; }
+        public DbSet<StreetType> StreetTypes { get; set; }
 
-        internal DbSet<StreetTypeTranslation> StreetTypeTranslations { get; set; }
+        public DbSet<StreetTypeTranslation> StreetTypeTranslations { get; set; }
     }
 }

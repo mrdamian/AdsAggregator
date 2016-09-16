@@ -1,7 +1,7 @@
 ﻿namespace AdsAggregatorSqlDataAccess.Entities
 {
-    internal class StreetType
+    public class StreetType
     {
-        internal virtual int StreetTypeId { get; set; }
+        public virtual int StreetTypeId { get; set; }
     }
 }
