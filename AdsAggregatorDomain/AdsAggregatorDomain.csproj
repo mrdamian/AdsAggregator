@@ -43,6 +43,7 @@
     <Compile Include="DomainObjects\Language.cs" />
     <Compile Include="DomainObjects\StreetType.cs" />
     <Compile Include="IObjectsInitializer.cs" />
+    <Compile Include="Repositories\IStreetTypeRepository.cs" />
     <Compile Include="Repositories\ILanguageRepository.cs" />
     <Compile Include="Repositories\IStreetRepository.cs" />
     <Compile Include="Repositories\IDistrictRepository.cs" />

@@ -1,0 +1,53 @@
+﻿@model AdsAggregatorWebPresentationModel.Models.StreetType.StreetTypeListViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2 style="margin:20px 0px 20px">Index</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    <div class="form-inline" style="margin-bottom: 20px">
+        <div class="form-group">
+            @Html.LabelFor(model => model.LanguageId)
+            @Html.DropDownListFor(model => model.LanguageId, Model.Languages, new { @class = "form-control", style="width: initial" })
+            <input type="submit" value="Save" class="btn btn-default" />
+        </div>
+    </div>
+}
+
+<table class="table">
+    <tr>
+        <th style="width:1%; padding:0 70px 0 0;">
+            @Html.DisplayNameFor(model => model.StreetTypes.First().ShortName)
+        </th>
+        <th style="width:1%; padding:0 70px 0 0;">
+            @Html.DisplayNameFor(model => model.StreetTypes.First().FullName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.StreetTypes)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ShortName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FullName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.StreetTypeId }) |
+                @Html.ActionLink("Details", "Details", new { id = item.StreetTypeId, languageId = item.LanguageId }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.StreetTypeId })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>

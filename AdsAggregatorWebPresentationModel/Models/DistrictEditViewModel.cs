@@ -1,6 +1,4 @@
-﻿using AdsAggregatorDomain;
-using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Web.Mvc;
 using System.Linq;
@@ -12,14 +10,16 @@ namespace AdsAggregatorWebPresentationModel.Models
     {
         public DistrictEditViewModel()
         {
-
         }
+
         public DistrictEditViewModel(IEnumerable<City> cities, District district = null)
         {
             if (district != null)
             {
                 DistrictId = district.DistrictId;
                 Name = district.Name;
+                //TODO : Try to cover by test situation when line below is commented
+                CityId = district.City.CityId;
             }
             Cities = cities.Select(c => new SelectListItem { Text = c.Name, Value = c.CityId.ToString(), Selected = false });
         }

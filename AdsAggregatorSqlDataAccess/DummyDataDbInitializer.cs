@@ -19,7 +19,8 @@ namespace AdsAggregatorSqlDataAccess
             context.Languages.Add(russian);
             var ukrainian = new Language { Name = "Українська", Code = "uk-UK" };
             context.Languages.Add(ukrainian);
-            context.Languages.Add(new Language { Name = "English", Code = "en-US" });
+            var english = new Language { Name = "English", Code = "en-US" };
+            context.Languages.Add(english);
 
             StreetType strTypeStreet = new StreetType();
             context.StreetTypes.Add(strTypeStreet);
@@ -43,6 +44,15 @@ namespace AdsAggregatorSqlDataAccess
                 StreetType = strTypeStreet
             };
             context.StreetTypeTranslations.Add(strTypeTranslationRussian);
+
+            StreetTypeTranslation strTypeTranslationEng = new StreetTypeTranslation
+            {
+                ShortName = "St.",
+                FullName = "Street",
+                Language = english,
+                StreetType = strTypeStreet
+            };
+            context.StreetTypeTranslations.Add(strTypeTranslationEng);
 
             StreetTranslation strTranslationUkrainian = new StreetTranslation
             {

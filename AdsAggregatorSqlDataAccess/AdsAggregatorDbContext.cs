@@ -19,11 +19,11 @@ namespace AdsAggregatorSqlDataAccess
 
         public DbSet<Language> Languages { get; set; }
 
+        public DbSet<StreetType> StreetTypes { get; set; }
+
         public DbSet<Street> Streets { get; set; }
 
         public DbSet<StreetTranslation> StreetTranslations { get; set; }
-
-        public DbSet<StreetType> StreetTypes { get; set; }
 
         public DbSet<StreetTypeTranslation> StreetTypeTranslations { get; set; }
     }

@@ -19,15 +19,32 @@ namespace AdsAggregatorSqlDataAccess.Repositories
 
         public void Insert(AdsAggregatorDomain.DomainObjects.District district)
         {
+            //TODO : Make integration testing for this. This code leads to creating new City each time
+            //District newDistrict = new District()
+            //{
+            //    DistrictId = district.DistrictId,
+            //    Name = district.Name,
+            //    City = new City()
+            //    {
+            //        CityId = district.City.CityId,
+            //        Name = district.City.Name
+            //    }
+            //};
+
+            //_context.Districts.Add(newDistrict);
+            //_context.SaveChanges();
+
+            var city = new City()
+            {
+                CityId = district.City.CityId,
+                Name = district.City.Name
+            };
+            _context.Cities.Attach(city);
             District newDistrict = new District()
             {
                 DistrictId = district.DistrictId,
                 Name = district.Name,
-                City = new City()
-                {
-                    CityId = district.City.CityId,
-                    Name = district.City.Name
-                }
+                City = city
             };
 
             _context.Districts.Add(newDistrict);
@@ -36,13 +53,25 @@ namespace AdsAggregatorSqlDataAccess.Repositories
 
         public void Update(AdsAggregatorDomain.DomainObjects.District district)
         {
+            //TODO : Make integration testing for this. This code leads to creating new City each time
+
+            //var entityDistrict = _context.Districts.Find(district.DistrictId);
+            //entityDistrict.Name = district.Name;
+            //entityDistrict.City = new City()
+            //{
+            //    CityId = district.City.CityId,
+            //    Name = district.City.Name
+            //};
+            //_context.SaveChanges();
             var entityDistrict =_context.Districts.Find(district.DistrictId);
             entityDistrict.Name = district.Name;
-            entityDistrict.City = new City()
+            var city = new City()
             {
                 CityId = district.City.CityId,
                 Name = district.City.Name
             };
+            _context.Cities.Attach(city);
+            entityDistrict.City = city;
             _context.SaveChanges();
         }
 

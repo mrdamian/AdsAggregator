@@ -72,6 +72,10 @@
     <Compile Include="Controllers\DistrictsController.cs" />
     <Compile Include="Controllers\CitiesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\StreetTypeController.cs" />
+    <Compile Include="Models\StreetType\StreetTypeEditViewModel.cs" />
+    <Compile Include="Models\StreetType\StreetTypeListViewModel.cs" />
+    <Compile Include="Models\StreetType\StreetTypeViewModel.cs" />
     <Compile Include="Models\DistrictViewModel.cs" />
     <Compile Include="Models\DistrictDetailsViewModel.cs" />
     <Compile Include="Models\DistrictEditViewModel.cs" />

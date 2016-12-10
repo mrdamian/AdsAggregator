@@ -3,13 +3,15 @@
     public class StreetType
     {
         private int _streetTypeId;
-        private string _name;
+        private string _shortName;
+        private string _fullName;
         private Language _language;
 
-        public StreetType(int streetTypeId, string name, Language language)
+        public StreetType(int streetTypeId, string shortName, string fullName, Language language)
         {
             _streetTypeId = streetTypeId;
-            _name = name;
+            _shortName = shortName;
+            _fullName = fullName;
             _language = language;
         }
 
@@ -26,16 +28,16 @@
             }
         }
 
-        public string Name
+        public string ShortName
         {
             get
             {
-                return _name;
+                return _shortName;
             }
 
             set
             {
-                _name = value;
+                _shortName = value;
             }
         }
 
@@ -49,6 +51,19 @@
             set
             {
                 _language = value;
+            }
+        }
+
+        public string FullName
+        {
+            get
+            {
+                return _fullName;
+            }
+
+            set
+            {
+                _fullName = value;
             }
         }
     }

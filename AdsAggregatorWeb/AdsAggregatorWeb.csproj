@@ -252,6 +252,10 @@
     <Content Include="Views\Districts\Create.cshtml" />
     <Content Include="Views\Districts\Details.cshtml" />
     <Content Include="Views\Districts\Delete.cshtml" />
+    <Content Include="Views\StreetType\Index.cshtml" />
+    <Content Include="Views\Districts\Edit.cshtml" />
+    <Content Include="Views\StreetType\Details.cshtml" />
+    <Content Include="Views\StreetType\Create.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

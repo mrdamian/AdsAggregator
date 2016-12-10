@@ -60,6 +60,7 @@
     <Compile Include="Entities\City.cs" />
     <Compile Include="DummyDataDbInitializer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\StreetTypeRepository.cs" />
     <Compile Include="Repositories\LanguageRepository.cs" />
     <Compile Include="Repositories\StreetRepository.cs" />
     <Compile Include="Repositories\DistrictRepository.cs" />
