@@ -43,18 +43,32 @@ namespace AdsAggregatorWebPresentationModel.Controllers
         }
 
         // GET: StreetType/Details/5
-        public ActionResult Details(int? id, int languageId)
+        public ActionResult Translations(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            var streetType = _streetTypeRepository.Find((int)id, languageId);
+            var streetType = _streetTypeRepository.Find((int)id);
             if (streetType == null)
             {
                 return HttpNotFound();
             }
-            return View(new StreetTypeViewModel(streetType));
+            return View(streetType.Select(st => new StreetTypeViewModel(st)));
+        }
+
+        public ActionResult EditTranslation(int? id, int languageId)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            var streetType = _streetTypeRepository.FindSingle((int)id, languageId);
+            if (streetType == null)
+            {
+                return HttpNotFound();
+            }
+            return View(new StreetTypeEditViewModel(_languageRepository.GetAll(), streetType));
         }
 
         // GET: StreetType/Create
@@ -68,7 +82,7 @@ namespace AdsAggregatorWebPresentationModel.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "StreetTypeId, ShortName, FullName, LanguageId, OriginalLanguageId")] StreetTypeEditViewModel streetType)
+        public ActionResult Create([Bind(Include = "StreetTypeId, ShortName, FullName, LanguageId")] StreetTypeEditViewModel streetType)
         {
             if (ModelState.IsValid)
             {

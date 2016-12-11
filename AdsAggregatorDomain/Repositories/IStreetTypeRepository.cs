@@ -13,6 +13,8 @@ namespace AdsAggregatorDomain.Repositories
 
         IEnumerable<StreetType> GetAll(int languageId);
 
-        StreetType Find(int id, int languageId);
+        StreetType FindSingle(int id, int languageId);
+
+        IEnumerable<StreetType> Find(int id);
     }
 }

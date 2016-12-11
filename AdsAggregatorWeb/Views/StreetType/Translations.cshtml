@@ -1,0 +1,49 @@
+﻿@model IEnumerable<AdsAggregatorWebPresentationModel.Models.StreetType.StreetTypeViewModel>
+
+@{
+    ViewBag.Title = "Translations";
+}
+
+<h2>Translations</h2>
+
+<div>
+    <h4>Street types</h4>
+    <table class="table">
+        <tr>
+            <th style="width:1%; padding:0 70px 0 0;">
+                @Html.DisplayNameFor(model => model.First().LanguageName)
+            </th>
+            <th style="width:1%; padding:0 70px 0 0;">
+                @Html.DisplayNameFor(model => model.First().ShortName)
+            </th>
+            <th style="width:1%; padding:0 70px 0 0;">
+                @Html.DisplayNameFor(model => model.First().FullName)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LanguageName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ShortName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FullName)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditTranslation", new { id = item.StreetTypeId, languageId = item.LanguageId }) |
+                    @Html.ActionLink("Delete", "DeleteTranslation", new { id = item.StreetTypeId, languageId = item.LanguageId })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.DistrictId })*@
+    @Html.ActionLink("Back to List", "Index")
+</p>
