@@ -11,7 +11,8 @@ namespace AdsAggregatorWebPresentationModel.Models.StreetType
         public StreetTypeListViewModel(IEnumerable<StreetTypeViewModel> streetTypes, IEnumerable<Language> languages, int selectedLanguageId)
         {
             StreetTypes = streetTypes;
-            Languages = languages.Select(c => new SelectListItem { Text = c.Name, Value = c.LanguageId.ToString(), Selected = c.LanguageId == selectedLanguageId });
+            LanguageId = selectedLanguageId;
+            Languages = languages.Select(c => new SelectListItem { Text = c.Name, Value = c.LanguageId.ToString() });
         }
 
         [Display(Name = "Language")]

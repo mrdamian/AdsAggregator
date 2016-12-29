@@ -22,7 +22,7 @@ namespace AdsAggregatorWebPresentationModel.Controllers
         public ActionResult Index()
         {
             // TODO: get it from session or cookies
-            int selectedLanguageId = 1;
+            int selectedLanguageId = 2;
             return GetStreetTypesByLanguage(selectedLanguageId);
         }
 
